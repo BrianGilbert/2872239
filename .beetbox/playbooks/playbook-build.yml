@@ -1,0 +1,34 @@
+---
+- hosts: localhost
+  connection: local
+  become: yes
+
+  vars:
+    beet_profile: "{{ lookup('env','BEET_PROFILE') | default('beetbox',true) }}"
+
+  vars_files:
+    - config/default.config.yml
+    - "config/profiles/{{ beet_profile }}.config.yml"
+    - config/project.config.yml
+    - config/host.config.yml
+    - config/config.yml
+    - config/local.config.yml
+
+  roles:
+    - role: beetbox-init
+    - role: beetboxvm.known-hosts
+    - role: geerlingguy.apache
+    - role: geerlingguy.mysql
+    - role: pwelch.avahi
+    - role: geerlingguy.php
+    - role: beetboxvm.phantomjs
+    - role: beetbox-web
+
+  post_tasks:
+    - name: Create welcome message.
+      template:
+        src: "{{ beet_base }}/.beetbox/templates/welcome.txt.j2"
+        dest: "{{ beet_home }}/results-build.txt"
+        force: yes
+        mode: 0644
+      become: no

@@ -1,0 +1,27 @@
+# Build artefacts.
+
+build
+node_modules
+vendor
+
+# Drupal.
+docroot/core
+docroot/modules/contrib
+docroot/profiles/council/modules/contrib
+docroot/themes/contrib
+docroot/profiles/council/themes/contrib
+docroot/sites/*/files
+docroot/sites/*/private
+docroot/sites/*/settings/settings.local.php
+
+# Development files.
+
+.idea
+.vagrant
+Vagrantfile
+*.iml
+
+
+# Debug files to ignore.
+
+npm-debug.log

@@ -1,0 +1,135 @@
+{
+  "name": "brian/schedup",
+  "description": "Scheduled Updates Testbed",
+  "type": "project",
+  "license": "GPL-2.0+",
+  "authors": [
+    {
+      "name": "Brian Gilbert",
+      "role": "Developer"
+    }
+  ],
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://packages.drupal.org/8"
+    }
+  ],
+  "config": {
+    "discard-changes": true,
+    "process-timeout": 1200
+  },
+  "require": {
+    "wikimedia/composer-merge-plugin": "^1.4.0",
+    "composer/installers": "^1.0.20",
+    "cweagans/composer-patches": "~1.0",
+    "drupal-composer/drupal-scaffold": "^2.0.1",
+    "drush/drush": "^8.1",
+    "drupal/core": "8.2.8",
+    "drupal/scheduled_updates": "^1.0",
+    "drupal/workbench_moderation": "^1.2"
+  },
+  "require-dev": {
+    "beet/box": "^0.4.0",
+    "consolidation/robo": "^1.0"
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "autoload": {
+    "classmap": [
+      "scripts/composer/ScriptHandler.php"
+    ]
+  },
+  "scripts": {
+    "up": "vagrant up",
+    "provision": "vagrant provision",
+    "dcr": "phpcs -n",
+    "ncr": "npm run lint",
+    "test": [
+      "@dcr",
+      "@ncr",
+      "@behat"
+    ],
+    "drupal-cr": "drush @drupal-8-2-8.local cr",
+    "drupal-export": "drush use @drupal-8-2-8.local && drush cr && drush cex -y",
+    "drupal-login": "drush @drupal-8-2-8.local uli",
+    "drupal-sync": "@drupal-export",
+    "drupal-revert": [
+      "@composer install --prefer-dist --ansi",
+      "drush use @drupal-8-2-8.local && drush cr && drush fr -y standard"
+    ],
+    "drupal-importdb": [
+      "@composer install --prefer-dist --ansi",
+      "npm install",
+      "@drupal-sql-drop",
+      "@drupal-syncdb",
+      "drush use @drupal-8-2-8.local && drush updb -y && drush cr && drush cim -y && drush cr"
+    ],
+    "drupal-sql-drop": "drush @drupal-8-2-8.local sql-drop -y",
+    "rebuild": [
+      "rm -rf vendor/ docroot/core/ docroot/modules/contrib/",
+      "@composer install --prefer-dist --ansi"
+    ],
+    "drupal-scaffold": "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",
+    "pre-install-cmd": [
+      "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
+    ],
+    "pre-update-cmd": [
+      "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
+    ],
+    "post-install-cmd": [
+      "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
+    ],
+    "post-update-cmd": [
+      "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
+    ],
+    "start-feature": "@drupal-importdb",
+    "finish-feature": "@drupal-export"
+  },
+  "extra": {
+    "installer-paths": {
+      "docroot/core": [
+        "type:drupal-core"
+      ],
+      "docroot/libraries/{$name}": [
+        "type:drupal-library"
+      ],
+      "docroot/modules/contrib/{$name}": [
+        "type:drupal-module"
+      ],
+      "docroot/themes/contrib/{$name}": [
+        "type:drupal-theme"
+      ]
+    },
+    "composer-exit-on-patch-failure": true,
+    "patches": {
+      "drupal/core": {
+        "Fix views_query_views_alter() - https://www.drupal.org/node/2744069#comment-11557945": "https://www.drupal.org/files/issues/2744069-5-views-in-queries.patch",
+        "Fix issue with quickedit - https://www.drupal.org/node/2661880#comment-11443453": "https://www.drupal.org/files/issues/quickedit-undefined-attr-2661880-14.patch",
+        "Fix module installer - https://gist.github.com/Decipher/8a7dc379e0b7a8fc0e64ec584b309008": "https://gist.githubusercontent.com/Decipher/8a7dc379e0b7a8fc0e64ec584b309008/raw/0b7d4ea90480aef060176bb88ee49a476e0a80b0/fix_module_installer.patch",
+        "Views Argument Tokens fail validation in More Link - https://www.drupal.org/node/2780891#comment-11503811": "https://www.drupal.org/files/issues/views-ignore_invalid_tokens_in_replace-2780891-6-D8.1.x.patch",
+        "Cannot use relationship for rendered entity on Views - https://www.drupal.org/node/2457999#comment-11681019": "https://www.drupal.org/files/issues/2457999-93.patch",
+        "Split 'Administer vocabularies and terms' permission - https://www.drupal.org/node/1848686#comment-11815904": "https://www.drupal.org/files/issues/split_administer-1848686-145.patch",
+        "View output is not used for autocomplete display - https://www.drupal.org/node/2174633#comment-11875558": "https://www.drupal.org/files/issues/view_output_is_not_used-2174633-93.patch",
+        "Fix View any unpublished content permission - https://www.drupal.org/node/2838452#comment-11897616": "https://www.drupal.org/files/issues/2838452-19.patch",
+        "Node revision routes don't convert {node} param - https://www.drupal.org/node/2730631#comment-11338795": "https://www.drupal.org/files/issues/2730631-13.patch",
+        "Allow for deletion of a single value of a multiple value field - https://www.drupal.org/node/1038316#comment-11994525": "https://www.drupal.org/files/issues/allow_for_deletion_of_a-1038316-112.patch",
+        "Missing contexts prevent caching of block access - https://www.drupal.org/node/2521956#comment-10462515": "https://www.drupal.org/files/issues/missing_contexts-2521956-3.patch",
+        "#states attribute does not work on #type datetime - https://www.drupal.org/node/2419131#comment-11780680": "https://www.drupal.org/files/issues/datetime-element-states-2419131-49.patch",
+        "RSS view with fields give wrong URL from path field - https://www.drupal.org/node/2673980#comment-11922820": "https://www.drupal.org/files/issues/rss_view_with_fields-2673980-12.patch"
+      },
+      "drupal/scheduled_updates": {
+        "Show the entities being updated in the list builder - https://www.drupal.org/node/2698143": "https://www.drupal.org/files/issues/update-title.patch",
+        "Cron Updates not run by User #1 - https://www.drupal.org/node/2793489#comment-12016637": "https://www.drupal.org/files/issues/cron-updates-2793489-9.patch",
+        "Configure link - https://www.drupal.org/node/2872241#comment-12052524": "https://www.drupal.org/files/issues/add_configure_link_to-2872241-8.patch"
+      },
+      "drupal/workbench_moderation": {
+        "Revision tracker's dynamic table creation can break Views - https://www.drupal.org/node/2847078#comment-11889659": "https://www.drupal.org/files/issues/2847078-6.patch",
+        "Provide Moderate tab for items that have never been published - https://www.drupal.org/node/2770049#comment-11473293": "https://www.drupal.org/files/issues/workbench_moderation_2770049_28.patch",
+        "Add basic support for Quick Edit - https://www.drupal.org/node/2749503#comment-11956350": "https://www.drupal.org/files/issues/workbench_moderation-quickedit-support-2749503-6.patch",
+        "Permissions: View All Unpublished Content does not work - https://www.drupal.org/node/2835883#comment-11905189": "https://www.drupal.org/files/issues/workbench_moderation-node_grants-2835883-3-D8.patch",
+        "Moderation form submission does not set revision author - https://www.drupal.org/node/2864883#comment-12011917": "https://www.drupal.org/files/issues/2864883-revision-author-4.patch"
+      }
+    }
+  }
+}

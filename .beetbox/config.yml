@@ -1,0 +1,8 @@
+---
+# Vagrant settings.
+vagrant_memory: 2048
+
+# Beetbox settings.
+beet_domain: drupal-8-2-8.local
+#beet_provision_playbook: build
+beet_root: "{{ beet_base }}/docroot"
