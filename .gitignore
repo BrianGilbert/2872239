@@ -17,8 +17,6 @@ docroot/sites/*/settings/settings.local.php
 # Development files.
 
 .idea
-.vagrant
-Vagrantfile
 *.iml
 
 
