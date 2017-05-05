@@ -18,6 +18,7 @@ git clone https://github.com/BrianGilbert/2872239.git
 CD to directory:
 ```
 cd 2872239
+composer rebuild
 ```
 
 Run VM:
