@@ -25,7 +25,7 @@
     "cweagans/composer-patches": "~1.0",
     "drupal-composer/drupal-scaffold": "^2.0.1",
     "drush/drush": "^8.1",
-    "drupal/core": "8.2.8",
+    "drupal/core": "8.3.2",
     "drupal/scheduled_updates": "^1.0",
     "drupal/workbench_moderation": "^1.2"
   },
@@ -104,18 +104,16 @@
     "composer-exit-on-patch-failure": true,
     "patches": {
       "drupal/core": {
-        "Fix views_query_views_alter() - https://www.drupal.org/node/2744069#comment-11557945": "https://www.drupal.org/files/issues/2744069-5-views-in-queries.patch",
         "Fix issue with quickedit - https://www.drupal.org/node/2661880#comment-11443453": "https://www.drupal.org/files/issues/quickedit-undefined-attr-2661880-14.patch",
         "Fix module installer - https://gist.github.com/Decipher/8a7dc379e0b7a8fc0e64ec584b309008": "https://gist.githubusercontent.com/Decipher/8a7dc379e0b7a8fc0e64ec584b309008/raw/0b7d4ea90480aef060176bb88ee49a476e0a80b0/fix_module_installer.patch",
-        "Views Argument Tokens fail validation in More Link - https://www.drupal.org/node/2780891#comment-11503811": "https://www.drupal.org/files/issues/views-ignore_invalid_tokens_in_replace-2780891-6-D8.1.x.patch",
-        "Cannot use relationship for rendered entity on Views - https://www.drupal.org/node/2457999#comment-11681019": "https://www.drupal.org/files/issues/2457999-93.patch",
-        "Split 'Administer vocabularies and terms' permission - https://www.drupal.org/node/1848686#comment-11815904": "https://www.drupal.org/files/issues/split_administer-1848686-145.patch",
-        "View output is not used for autocomplete display - https://www.drupal.org/node/2174633#comment-11875558": "https://www.drupal.org/files/issues/view_output_is_not_used-2174633-93.patch",
+        "Views Argument Tokens fail validation in More Link - https://www.drupal.org/node/2780891#comment-11985672": "https://www.drupal.org/files/issues/2780891-views-more-link-token-fail-21.patch",
+        "Split 'Administer vocabularies and terms' permission - https://www.drupal.org/node/1848686#comment-11815904": "https://www.drupal.org/files/issues/split_administer-1848686-166.patch",
+        "View output is not used for autocomplete display - https://www.drupal.org/node/2174633#comment-12067668": "https://www.drupal.org/files/issues/2174633-143-entity-reference.patch",
         "Fix View any unpublished content permission - https://www.drupal.org/node/2838452#comment-11897616": "https://www.drupal.org/files/issues/2838452-19.patch",
         "Node revision routes don't convert {node} param - https://www.drupal.org/node/2730631#comment-11338795": "https://www.drupal.org/files/issues/2730631-13.patch",
-        "Allow for deletion of a single value of a multiple value field - https://www.drupal.org/node/1038316#comment-11994525": "https://www.drupal.org/files/issues/allow_for_deletion_of_a-1038316-112.patch",
+        "Allow for deletion of a single value of a multiple value field - https://www.drupal.org/node/1038316#comment-12000494": "https://www.drupal.org/files/issues/1038316-116-field-multiple-remove-item-alt.patch",
         "Missing contexts prevent caching of block access - https://www.drupal.org/node/2521956#comment-10462515": "https://www.drupal.org/files/issues/missing_contexts-2521956-3.patch",
-        "#states attribute does not work on #type datetime - https://www.drupal.org/node/2419131#comment-11780680": "https://www.drupal.org/files/issues/datetime-element-states-2419131-49.patch",
+        "#states attribute does not work on #type datetime - https://www.drupal.org/node/2419131#comment-11780680": "https://www.drupal.org/files/issues/datetime-element-states-2419131-55.patch",
         "RSS view with fields give wrong URL from path field - https://www.drupal.org/node/2673980#comment-11922820": "https://www.drupal.org/files/issues/rss_view_with_fields-2673980-12.patch"
       },
       "drupal/scheduled_updates": {
