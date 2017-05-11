@@ -1,10 +1,11 @@
-uuid: 1abf8094-c439-4c50-9852-7fd59470d7ae
+uuid: d9c45aad-34b6-4ea9-804a-744e39678980
 langcode: en
 status: true
 dependencies:
   config:
     - core.entity_view_mode.node.teaser
     - field.field.node.page.body
+    - field.field.node.page.scheduled_publication
     - node.type.page
   module:
     - text
@@ -23,6 +24,15 @@ content:
     settings:
       trim_length: 600
     third_party_settings: {  }
+    region: content
   links:
     weight: 101
-hidden: {  }
+    region: content
+  workbench_moderation_control:
+    weight: -20
+    region: content
+  workbench_moderation_moderate:
+    weight: -10
+    region: content
+hidden:
+  scheduled_publication: true

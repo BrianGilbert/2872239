@@ -1,9 +1,10 @@
-uuid: a91e13fe-c6f7-4bd3-8108-8f2ebb2c8bc1
+uuid: f1852bd4-14d5-4995-a121-187fcd62dcb7
 langcode: en
 status: true
 dependencies:
   config:
     - field.field.node.page.body
+    - field.field.node.page.scheduled_publication
     - node.type.page
   module:
     - text
@@ -21,6 +22,15 @@ content:
     weight: 100
     settings: {  }
     third_party_settings: {  }
+    region: content
   links:
     weight: 101
-hidden: {  }
+    region: content
+  workbench_moderation_control:
+    weight: -20
+    region: content
+  workbench_moderation_moderate:
+    weight: -10
+    region: content
+hidden:
+  scheduled_publication: true

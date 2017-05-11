@@ -1,12 +1,12 @@
-uuid: 694e9997-a829-49e9-b375-543408410115
+uuid: 51f26ce0-1bed-4c75-ae30-a63ffb45ffd7
 langcode: en
 status: true
 dependencies:
   module:
     - node
     - scheduled_updates
-id: node.moderation_state_update
-field_name: moderation_state_update
+id: node.scheduled_publication
+field_name: scheduled_publication
 entity_type: node
 type: entity_reference
 settings:

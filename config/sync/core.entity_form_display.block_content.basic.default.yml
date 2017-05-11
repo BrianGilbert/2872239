@@ -1,4 +1,4 @@
-uuid: 11e41a0d-cdb4-419d-b64e-3f043e2f94a5
+uuid: c472a4e5-c6f4-4dd0-b973-0fc9db75eee2
 langcode: en
 status: true
 dependencies:
@@ -7,6 +7,7 @@ dependencies:
     - field.field.block_content.basic.body
   module:
     - text
+    - workbench_moderation
 _core:
   default_config_hash: kv6gwb6PJ8DcMSj5kgsd52qCIHl1xkxBDL5_AMm-g8k
 id: block_content.basic.default
@@ -22,6 +23,7 @@ content:
       summary_rows: 3
       placeholder: ''
     third_party_settings: {  }
+    region: content
   info:
     type: string_textfield
     weight: -5
@@ -29,4 +31,5 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+    region: content
 hidden: {  }

@@ -1,15 +1,10 @@
-uuid: 095db2f4-1cbf-4e43-8d60-2862b1f11869
+uuid: b939218b-8940-4d41-acc9-f3bf4b67a73f
 langcode: en
 status: true
 dependencies:
   module:
-    - menu_ui
     - workbench_moderation
 third_party_settings:
-  menu_ui:
-    available_menus:
-      - main
-    parent: 'main:'
   workbench_moderation:
     enabled: true
     allowed_moderation_states:

@@ -1,4 +1,4 @@
-uuid: 56fd49fe-3a00-4fe7-be74-d599f5ca9c7a
+uuid: 67775f06-7c99-4980-967e-9d73a3f04c4b
 langcode: en
 status: true
 dependencies:
@@ -17,6 +17,7 @@ mode: default
 content:
   member_for:
     weight: 5
+    region: content
   user_picture:
     type: image
     weight: 0
@@ -25,4 +26,5 @@ content:
       image_link: content
     third_party_settings: {  }
     label: hidden
+    region: content
 hidden: {  }

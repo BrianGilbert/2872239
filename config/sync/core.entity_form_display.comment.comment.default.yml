@@ -1,4 +1,4 @@
-uuid: 48679974-3814-4fb4-a530-85a525697510
+uuid: 72df21a2-d078-48be-ad39-166147f92a41
 langcode: en
 status: true
 dependencies:
@@ -16,6 +16,7 @@ mode: default
 content:
   author:
     weight: -2
+    region: content
   comment_body:
     type: text_textarea
     weight: 11
@@ -23,6 +24,7 @@ content:
       rows: 5
       placeholder: ''
     third_party_settings: {  }
+    region: content
   subject:
     type: string_textfield
     weight: 10
@@ -30,4 +32,5 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+    region: content
 hidden: {  }

@@ -1,0 +1,24 @@
+uuid: 83f867da-b5a0-439e-8eec-d969b6ef1057
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.scheduled_publication
+    - node.type.article
+    - scheduled_updates.scheduled_update_type.node__moderation_state
+id: node.article.scheduled_publication
+field_name: scheduled_publication
+entity_type: node
+bundle: article
+label: 'Scheduled Publication'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler_settings:
+    target_bundles:
+      - node__moderation_state
+  handler: 'default:scheduled_update'
+field_type: entity_reference

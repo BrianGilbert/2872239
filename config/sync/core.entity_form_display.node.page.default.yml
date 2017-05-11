@@ -1,10 +1,10 @@
-uuid: 604511fe-3cce-4260-a9d9-6413e50c04f3
+uuid: da27d10b-066a-47de-a540-b4c472c3ca72
 langcode: en
 status: true
 dependencies:
   config:
     - field.field.node.page.body
-    - field.field.node.page.moderation_state_update
+    - field.field.node.page.scheduled_publication
     - node.type.page
   module:
     - inline_entity_form
@@ -26,40 +26,46 @@ content:
       summary_rows: 3
       placeholder: ''
     third_party_settings: {  }
+    region: content
   created:
     type: datetime_timestamp
     weight: 10
     settings: {  }
     third_party_settings: {  }
-  moderation_state_update:
-    type: inline_entity_form_complex
-    weight: 11
-    settings:
-      override_labels: true
-      label_singular: 'Moderation state Update'
-      label_plural: 'Moderation state Updates'
-      allow_new: true
-      match_operator: CONTAINS
-      allow_existing: false
-      form_mode: default
-    third_party_settings: {  }
+    region: content
   path:
     type: path
     weight: 30
     settings: {  }
     third_party_settings: {  }
+    region: content
   promote:
     type: boolean_checkbox
     settings:
       display_label: true
     weight: 15
     third_party_settings: {  }
+    region: content
+  scheduled_publication:
+    type: inline_entity_form_complex
+    weight: 11
+    settings:
+      override_labels: true
+      label_singular: 'Scheduled Publication'
+      label_plural: 'Scheduled Publications'
+      allow_new: true
+      match_operator: CONTAINS
+      allow_existing: false
+      form_mode: default
+    third_party_settings: {  }
+    region: content
   sticky:
     type: boolean_checkbox
     settings:
       display_label: true
     weight: 16
     third_party_settings: {  }
+    region: content
   title:
     type: string_textfield
     weight: -5
@@ -67,6 +73,7 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+    region: content
   uid:
     type: entity_reference_autocomplete
     weight: 5
@@ -75,4 +82,5 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+    region: content
 hidden: {  }

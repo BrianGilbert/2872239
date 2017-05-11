@@ -1,4 +1,4 @@
-uuid: ba9c4a30-9eff-4d0d-b72b-c01338d7d703
+uuid: f93b8a83-3edf-4dad-af7a-18adefb55fd7
 langcode: en
 status: true
 dependencies: {  }
@@ -14,4 +14,4 @@ update_runner:
   after_run: DELETE
   invalid_update_behavior: DELETE
   create_revisions: BUNDLE_DEFAULT
-  update_user: USER_UPDATE_OWNER
+  update_user: USER_REVISION_OWNER
