@@ -26,7 +26,7 @@ class DefaultController extends ControllerBase {
   }
 
   public function doQuery() {
-    $field_id = 'moderation_state_update';
+    $field_id = 'scheduled_publication';
     // repalace with actual update ids.
     $all_ready_update_ids = [1 => "1"];
     $storage = \Drupal::entityTypeManager()->getStorage('node');
